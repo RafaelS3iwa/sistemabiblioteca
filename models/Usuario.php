@@ -19,16 +19,20 @@ class Usuario
     public function buscar($id)
     {
         try{
-            $query = ("SELECT * FROM {$this->table} WHERE id_usuario = $id");
+            $query = ("SELECT * FROM {$this->table} WHERE id_usuario = :id");
             $stmt = $this->db->prepare($query);  
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT); 
+            $stmt->execute();
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC); 
+
+            if($usuario){ 
+                echo "ID: " .$usuario['id_usuario'] . "<br>"; 
+                echo "Nome: " .$usuario['nome'] . "<br>"; 
+                echo "E-mail: " .$usuario['email'] . "<br>"; 
+                echo "Perfil: " .$usuario['perfil'] . "<br>"; 
+            } //isso tudo aqui é temporário
         }catch(PDOException $e ){
             echo 'Erro na inserção: ' . $e->getMessage(); 
-        }
-
-        try{
-            $stmt->execute();
-        }catch(PDOException $e){
-            echo 'Erro ao buscar o usuário: ' . $e->getMessage();
         }
     }
 
@@ -40,14 +44,17 @@ class Usuario
         try{
             $query = ("SELECT * FROM {$this->table}"); 
             $stmt = $this->db->prepare($query); 
+            $stmt->execute();
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC); 
+
+            if($usuario){
+                echo "ID: " .$usuario['id_usuario'] . "<br>"; 
+                echo "Nome: " .$usuario['nome'] . "<br>"; 
+                echo "E-mail: " .$usuario['email'] . "<br>"; 
+                echo "Perfil: " .$usuario['perfil'] . "<br>"; 
+            }
         }catch(PDOException $e){
             echo 'Erro na inserção: ' . $e->getMessage(); 
-        }
-
-        try{
-            $stmt->execute();
-        }catch(PDOException $e){
-            echo 'Erro ao listar os alunos : ' . $e->getMessage(); 
         }
     }
 
@@ -87,12 +94,13 @@ class Usuario
     public function editar($id, $dados)
     {
         try{
-            $query = ("UPDATE {$this->table} SET nome = :nome, email = :email, senha = :senha WHERE id_usuario = :$id");
+            $query = ("UPDATE {$this->table} SET nome = :nome, email = :email, senha = :senha WHERE id_usuario = :id");
             $stmt = $this->db->prepare($query); 
         }catch(PDOException $e){
             echo 'Erro na preparação da consulta: ' . $e->getMessage(); 
         }
 
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT); 
         $stmt->bindParam(':nome', $dados['nome']);
         $stmt->bindParam(':email', $dados['email']);
         $stmt->bindParam(':senha', $dados['senha']);
@@ -106,8 +114,20 @@ class Usuario
         }
     }
 
-    //Excluir Usuário
+    /**
+     * Exclui Usuário por id
+     * @param int $id
+     */
+    
     public function excluir($id)
     {
+        try{
+            $query = ("DELETE FROM {$this->table} WHERE id_usuario = :id"); 
+            $stmt = $this->db->prepare($query); 
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT); 
+            $stmt->execute();
+        }catch(PDOException $e){
+            echo 'Erro na preparação da exclusão: ' . $e->getMessage(); 
+        }
     }
 }
