@@ -13,7 +13,7 @@ class Livro{
     /**
     *Buscar registro único  
     *@param int $id
-    *@return Livro
+    *@return Livro|null
     */
     public function buscar($id){
         try{
@@ -22,24 +22,17 @@ class Livro{
             $stmt->bindParam(':id', $id, PDO::PARAM_INT); 
             $stmt->execute();
 
-            $livro = $stmt->fetch(PDO::FETCH_ASSOC);    
-            if($livro){
-                echo "ID: " . $livro['id_livro'] . "<br>"; 
-                echo "Título" . $livro['titulo'] . "<br>"; 
-                echo "Autor" . $livro['autor'] . "<br>"; 
-                echo "Número de Páginas: " . $livro['numero_pagina'] . "<br>"; 
-                echo "Preço: " . $livro['preco'] . "<br>"; 
-                echo "Ano de Publicação: " . $livro['ano_publicacao'] . "<br>"; 
-                echo "ISBN" . $livro['isbn'] . "<br>"; 
-            }
+            return $stmt->fetch(PDO::FETCH_OBJ); 
         }catch(PDOException $e){
             echo "Erro na inserção: " . $e->getMessage(); 
+            return null; 
         }
     }
     
     /** 
      * Busca o Livro pelo Título
      * @param string $titulo 
+     * @return Livro|null
      */
     public function buscarTitulo($titulo){
         try{
@@ -48,24 +41,17 @@ class Livro{
             $stmt->bindParam(':%titulo%', $titulo, PDO::PARAM_STR);
             $stmt->execute(); 
 
-            $livro = $stmt->fetch(PDO::FETCH_ASSOC);    
-            if($livro){
-                echo "ID: " . $livro['id_livro'] . "<br>"; 
-                echo "Título" . $livro['titulo'] . "<br>"; 
-                echo "Autor" . $livro['autor'] . "<br>"; 
-                echo "Número de Páginas: " . $livro['numero_pagina'] . "<br>"; 
-                echo "Preço: " . $livro['preco'] . "<br>"; 
-                echo "Ano de Publicação: " . $livro['ano_publicacao'] . "<br>"; 
-                echo "ISBN" . $livro['isbn'] . "<br>"; 
-            }
+            return $stmt->fetch(PDO::FETCH_OBJ); 
         }catch(PDOException $e){
             echo 'Erro na inserção: ' .$e->getMessage(); 
+            return null; 
         }
     }
 
     /** 
      * Busca o Livro pelo Autor
      * @param string $autor
+     * @return Livro|null 
      */
     public function buscarAutor($autor){
         try{
@@ -75,43 +61,25 @@ class Livro{
             
             $stmt->execute(); 
 
-            $livro = $stmt->fetch(PDO::FETCH_ASSOC);    
-            if($livro){
-                echo "ID: " . $livro['id_livro'] . "<br>"; 
-                echo "Título" . $livro['titulo'] . "<br>"; 
-                echo "Autor" . $livro['autor'] . "<br>"; 
-                echo "Número de Páginas: " . $livro['numero_pagina'] . "<br>"; 
-                echo "Preço: " . $livro['preco'] . "<br>"; 
-                echo "Ano de Publicação: " . $livro['ano_publicacao'] . "<br>"; 
-                echo "ISBN" . $livro['isbn'] . "<br>"; 
-            }
+            return $stmt->fetch(PDO::FETCH_OBJ); 
         }catch(PDOException $e){
             echo 'Erro na inserção: ' .$e->getMessage(); 
+            return null; 
         }
     }
 
     /**
      * Listar todos os registros da tabela
-     * @return Livro
      */
     public function listar(){
         try{
             $query = ("SELECT * FROM {$this->table}"); 
-            $stmt = $this->db->prepare($query); 
-            $stmt->execute(); 
+            $stmt = $this->db->query($query); 
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
 
-            $livro = $stmt->fetch(PDO::FETCH_ASSOC); 
-            if($livro){
-                echo "ID: " . $livro['id_livro'] . "<br>"; 
-                echo "Título" . $livro['titulo'] . "<br>"; 
-                echo "Autor" . $livro['autor'] . "<br>"; 
-                echo "Número de Páginas: " . $livro['numero_pagina'] . "<br>"; 
-                echo "Preço: " . $livro['preco'] . "<br>"; 
-                echo "Ano de Publicação: " . $livro['ano_publicacao'] . "<br>"; 
-                echo "ISBN" . $livro['isbn'] . "<br>"; 
-            }
         }catch(PDOException $e){
             echo "Erro na inserção: " . $e->getMessage(); 
+            return null; 
         }
     }
 
@@ -134,8 +102,10 @@ class Livro{
             $stmt->bindParam(':isbn', $dados['isbn']);  
 
             $stmt->execute();
+            return true; 
         }catch(PDOException $e){
             echo 'Erro na inserção: ' . $e->getMessage(); 
+            return false; 
         }
     }
     
@@ -150,17 +120,19 @@ class Livro{
             $query = "UPDATE {$this->table} SET titulo = :titulo, autor = :autor, numero_pagina = :numero_pagina, preco = :preco, ano_publicacao = :ano_publicacao, isbn = :isbn WHERE id_livro = :id"; 
             $stmt = $this->db->prepare($query); 
 
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT); 
             $stmt->bindParam(':titulo', $dados['titulo']);  
             $stmt->bindParam(':autor', $dados['autor']);  
             $stmt->bindParam(':numero_pagina', $dados['numero_pagina']);  
             $stmt->bindParam(':preco', $dados['preco']);  
             $stmt->bindParam(':ano_publicacao', $dados['ano_publicacao']);  
             $stmt->bindParam(':isbn', $dados['isbn']);  
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT); 
 
             $stmt->execute();
+            return true; 
         }catch(PDOException $e){
             echo 'Erro na inserção: ' .$e->getMessage(); 
+            return false;
         }
     }
 

@@ -8,6 +8,6 @@
 <body>
     
     <h1>Sistema Biblioteca</h1>
-    
+    <a class="nav-link active" aria-current="page" href="/admin/">Entra no Baguio aí</a>
 </body>
 </html>
