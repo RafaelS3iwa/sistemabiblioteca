@@ -1,5 +1,5 @@
 <?php 
-
+require_once $_SERVER['DOCUMENT_ROOT'] . "/database/DBConexao.php"; 
 class Livro{
     
     protected $db;
@@ -39,6 +39,7 @@ class Livro{
             $query = ("SELECT * FROM {$this->table} WHERE titulo LIKE '%:titulo%");
             $stmt = $this->db->prepare($query); 
             $stmt->bindParam(':%titulo%', $titulo, PDO::PARAM_STR);
+            
             $stmt->execute(); 
 
             return $stmt->fetch(PDO::FETCH_OBJ); 

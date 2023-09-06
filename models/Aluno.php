@@ -1,5 +1,5 @@
 <?php 
-
+require_once $_SERVER['DOCUMENT_ROOT'] . "/database/DBConexao.php";
 class Aluno{
 
     protected $db;
@@ -13,7 +13,7 @@ class Aluno{
     /**
     *Buscar registro único  de Aluno
     *@param int $id
-    *@return Aluno
+    *@return Aluno|null 
     */
     public function buscar($id){
         try{
@@ -22,18 +22,11 @@ class Aluno{
             $stmt->bindParam(':id', $id, PDO::PARAM_INT); 
             $stmt->execute(); 
 
-            $aluno = $stmt->fetch(PDO::FETCH_ASSOC); 
-            if($aluno){
-                echo "ID: " . $aluno['id_aluno'] . "<br>";    
-                echo "Nome: " . $aluno['nome']  . "<br>";    
-                echo "CPF: " . $aluno['cpf']  . "<br>";    
-                echo "E-mail: " . $aluno['email']  . "<br>";    
-                echo "Telefone: " . $aluno['telefone']  . "<br>";    
-                echo "Celular: " . $aluno['celular']  . "<br>";    
-                echo "Data de Nascimento: " . $aluno['data_nascimento']  ; "<br>";    
-        }
+            return $stmt->fetch(PDO::FETCH_OBJ);
+            
         }catch(PDOException $e){
             echo 'Erro na inserção: ' . $e->getMessage(); 
+            return null; 
         }
     }
     
@@ -43,21 +36,12 @@ class Aluno{
     public function listar(){
         try{
             $query = "SELECT * FROM {$this->table}"; 
-            $stmt = $this->db->prepare($query); 
-            $stmt->execute(); 
-    
-            $aluno = $stmt->fetch(PDO::FETCH_ASSOC); 
-            if($aluno){
-                echo "ID: " . $aluno['id_aluno'] . "<br>";    
-                echo "Nome: " . $aluno['nome']  . "<br>";    
-                echo "CPF: " . $aluno['cpf']  . "<br>";    
-                echo "E-mail: " . $aluno['email']  . "<br>";    
-                echo "Telefone: " . $aluno['telefone']  . "<br>";    
-                echo "Celular: " . $aluno['celular']  . "<br>";    
-                echo "Data de Nascimento: " . $aluno['data_nascimento']  ; "<br>";    
-        }
+            $stmt = $this->db->query($query); 
+            return $stmt->fetchAll(PDO::FETCH_OBJ); 
+
         }catch(PDOException $e){
             echo 'Erro na inserção: ' . $e->getMessage(); 
+            return null;
         }
     }
 
@@ -79,8 +63,10 @@ class Aluno{
             $stmt->bindParam(':data_nascimento' , $dados['data_nascimento']); 
 
             $stmt->execute(); 
+            return true; 
         }catch(PDOException $e){
             echo 'Erro na inserção: ' . $e->getMessage(); 
+            return false; 
         }
     }
 
@@ -105,8 +91,10 @@ class Aluno{
             $stmt->bindParam(':data_nascimento' , $dados['data_nascimento']); 
 
             $stmt->execute(); 
+            return true; 
         }catch(PDOException $e){
             echo 'Erro na inserção: ' . $e->getMessage(); 
+            return false; 
         }
     }
 

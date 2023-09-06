@@ -23,7 +23,7 @@ class Usuario
             $stmt = $this->db->prepare($query);  
             $stmt->bindParam(":id", $id, PDO::PARAM_INT); 
             $stmt->execute();
-
+           
             return $stmt->fetch(PDO::FETCH_OBJ); 
 
         }catch(PDOException $e ){
