@@ -23,7 +23,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page" href="/admin/">Home</a>
-                        <a class="nav-link" href="#">Emprestimos</a>
+                        <a class="nav-link" href="/admin/emprestimos/">Emprestimos</a>
                         <a class="nav-link" href="/admin/livros/">Livros</a>
                         <a class="nav-link" href="/admin/alunos/">Alunos</a>
                         <a class="nav-link" href="/admin/usuarios/">Usuários</a>                       
