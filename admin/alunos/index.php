@@ -4,7 +4,9 @@
 ?>
 
     <main class="container mt-3 mb-3">
-        <h1>Lista de Alunos</h1>
+        <h1>Lista de Alunos
+            <a href="cadastrar.php" class ="btn btn-primary float-end">Cadastrar</a>           
+        </h1>
 
         <table class="table table-striped">
             <thead>
@@ -35,7 +37,7 @@
                     <td><?=$aluno->celular?></td>
                     <td><?=$aluno->data_nascimento?></td>
                     <td>
-                            <a href="#" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="editar.php?id=<?=$aluno->id_aluno?>" class="btn btn-primary btn-sm">Editar</a>
                             <a href="#" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
