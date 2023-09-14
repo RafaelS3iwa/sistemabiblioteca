@@ -9,7 +9,7 @@
 <main class="container mt-3 mb-3">
     <h1>Editar Usuário</h1>
 
-    <form action="editar.php?id=<?=$usuario->id_usuario?>" method="post" class="row g-3">
+    <form action="editar.php?id_usuario=<?=$usuario->id_usuario?>" method="post" class="row g-3">
         <div class="col-md-12">
             <label for="nome" class="form-label">Nome</label>
             <input type="text" name="nome" id="nome" class="form-control" required value="<?=$usuario->nome?>">
@@ -22,20 +22,23 @@
 
         <div class="col-md-6">
             <label for="senha" class="form-label">Senha</label>
-            <input type="password" name="senha" id="senha" class="form-control" required>
+            <input type="password" name="senha" id="senha" class="form-control">
+            <p class="text-secondary">Caso queira manter a senha, deixe o campo em branco.</p>
         </div>
 
         <div class="col-md-8">
             <label for="pefil" class="form-label">Perfil</label>
             <select name="perfil" id="perfil" class="form-select" required>
                 <option>Selecione o Perfil</option>
-                <option value="usuario">Usuário</option>
-                <option value="administrador">Administrador</option>
+                <option value="usuario" 
+                <?=($usuario->perfil == "usuario") ? "selected" : ""; ?>>Usuário</option>
+                <option value="administrador"
+                <?=($usuario->perfil == "administrador") ? "selected" : ""; ?>>Administrador</option>
             </select>
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Confirmar</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
             <a href="index.php" class="btn btn-secondary">Cancelar</a>
         </div>
     </form>

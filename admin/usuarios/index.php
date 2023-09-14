@@ -1,6 +1,11 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/cabecalho.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/UsuarioController.php";
+
+    if(isset($_GET["del"]) && !empty($_GET['id_usuario'])){
+        $usuarioController = new UsuarioController();
+        $usuarioController->excluirUsuario();
+    }
 ?>
 
     <main class="container mt-3 mb-3">
@@ -35,8 +40,8 @@
                     <td><?=$user->perfil?></td>
                     <td>
                             <!-- o ponto de interrogação significa URL ? Arquivo -->
-                            <a href="editar.php?id=<?=$user->id_usuario?>" class="btn btn-primary btn-sm">Editar</a>
-                            <a href="#" class="btn btn-danger btn-sm">Excluir</a>
+                            <a href="editar.php?id_usuario=<?=$user->id_usuario?>" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="index.php?id_usuario=<?=$user->id_usuario ?>?&del" class="btn btn-danger btn-sm">Excluir</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

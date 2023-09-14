@@ -8,6 +8,8 @@
             <a href="cadastrar.php" class ="btn btn-primary float-end">Cadastrar</a>
         </h1>
 
+        <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/includes/alerta.php";?>
+        
         <table class="table table-striped">
             <thead>
                 <tr>

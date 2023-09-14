@@ -1,4 +1,6 @@
 <?php 
+
+session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . "/database/DBConexao.php"; 
 class Livro{
     
@@ -103,6 +105,7 @@ class Livro{
             $stmt->bindParam(':isbn', $dados['isbn']);  
 
             $stmt->execute();
+            $_SESSION['sucesso'] = "Cadastro realizado com sucesso 	....φ(︶▽︶)φ....	"; 
             return true; 
         }catch(PDOException $e){
             echo 'Erro na inserção: ' . $e->getMessage(); 
