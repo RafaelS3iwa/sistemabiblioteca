@@ -46,7 +46,7 @@ class Aluno{
     }
 
        /**
-     * Cadastrar Aluno
+     * Cadastrar Aluno  
      * @param array $dados 
      * @return bool 
      */
