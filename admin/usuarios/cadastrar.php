@@ -9,7 +9,7 @@
 <main class="container mt-3 mb-3">
     <h1>Cadastrar Usuário</h1>
 
-    <form action="cadastrar.php" method="post" class="row g-3">
+    <form action="cadastrar.php" method="post" class="row g-3">  
         <div class="col-md-12">
             <label for="nome" class="form-label">Nome</label>
             <input type="text" name="nome" id="nome" class="form-control" required>
