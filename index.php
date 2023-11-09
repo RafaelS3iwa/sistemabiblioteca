@@ -43,7 +43,7 @@
             <h2>Explorando Mundos Literários</h2>
             <p>Descubra os tesouros de conhecimentos e Imaginação em nossa Biblioteca</p>
 
-            <div id="formProcura">
+            <div id="formProcurar">
                 <form action="buscar.php" method="get">
                     <i class="fa-solid fa-magnifying-glass"></i>
 
@@ -57,11 +57,8 @@
 
     <main class="container">
         <section id="livrosPopulares">
-
-            <div class="blocoTitulo">
-
+            <div class="bloco-titulo">
                 <div class="titulo">
-
                     <h2>Livros Populares</h2>
                     <a href="#">Ver todos ></a>
                 </div>
@@ -71,48 +68,24 @@
 
             <div class="lista-livros">
 
+            <?php for($count = 1; $count <=6; $count++): ?>
                 <div class="card-livro">
-                    <img src="/assets/img/livro-css.png" alt="CSS">  
+                    <div class="capa">
+                        <img src="/assets/img/livro-css.png" alt="CSS">
+                        <span class="legenda">Lançamento</span>
+                    </div>
                     <h3>CSS Grid Layout: Criando Layouts Profissionais</h3>
                 </div>
-                
-                <div class="card-livro">
-                    <img src="/assets/img/livro-html.png" alt="HTML e CSS">  
-                    <h3>HTML e CSS Grid: Guia Prático</h3>
-                </div>
-
 
                 <div class="card-livro">
-                    <img src="/assets/img/livro-css.png" alt="CSS">  
-                    <h3>CSS Grid Layout: Criando Layouts Profissionais</h3>
+                    <div class="capa">
+                        <img src="/assets/img/livro-html.png" alt="CSS">
+                        <span class="black-friday">Black Friday</span>
+                    </div>
+                    <h3>HTML e CSS: Guia Prático</h3>
                 </div>
-                
-                <div class="card-livro">
-                    <img src="/assets/img/livro-html.png" alt="HTML e CSS">  
-                    <h3>HTML e CSS Grid: Guia Prático</h3>
-                </div>
-
-
-                <div class="card-livro">
-                    <img src="/assets/img/livro-css.png" alt="CSS">  
-                    <h3>CSS Grid Layout: Criando Layouts Profissionais</h3>
-                </div>
-                
-                <div class="card-livro">
-                    <img src="/assets/img/livro-html.png" alt="HTML e CSS">  
-                    <h3>HTML e CSS Grid: Guia Prático</h3>
-                </div>
-
-
-                <div class="card-livro">
-                    <img src="/assets/img/livro-css.png" alt="CSS">  
-                    <h3>CSS Grid Layout: Criando Layouts Profissionais</h3>
-                </div>
-                
-                <div class="card-livro">
-                    <img src="/assets/img/livro-html.png" alt="HTML e CSS">  
-                    <h3>HTML e CSS Grid: Guia Prático</h3>
-                </div>
+    
+            <?php endfor;?>
 
             </div>
         </section>
@@ -129,7 +102,7 @@
                     <li><a href="#">Política de Privacidade</a></li>
                 </ul>
             </div>
-            
+
             <div class="bloco-rodape">
                 <h2>Contatos</h2>
                 <ul>
@@ -150,7 +123,7 @@
         </div>
 
         <div id="copyright">
-                &copy; 2023 - Todos os direitos são reservados - Desenvolvido por Rafael
+            &copy; 2023 - Todos os direitos são reservados - Desenvolvido por Rafael
         </div>
     </footer>
     <script src="assets/js/main.js"></script>
