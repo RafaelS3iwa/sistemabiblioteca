@@ -1,93 +1,102 @@
-:root{
-    --primaria: #3e4095; 
+:root {
+    --primaria: #3e4095;
     --secundaria: #00afee;
-    --laranja: #f58634; 
-    --texto:  #4d4d4d; 
-    --label-categoria: #d9c505; 
-}
-
-*{
+    --laranja: #f58634;
+    --texto: #4d4d4d;
+    --label-categoria: #d9c505;
+  }
+  /* Serve para definiar as bordas do site, de forma que voce tem que fazer a formatação */
+  * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box ;
-}
-
-body{ 
-    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+  }
+   
+  body {
+    font-family: "Montserrat", sans-serif;
     color: var(--texto);
-}
-
-.container{ 
+  }
+  /* margin 0, auto serve para ajudar os lados */
+  .container {
     max-width: 1140px;
     margin: 0 auto;
     padding: 15px;
-}
-
-#cabecalho{
+  }
+   
+  .barra-topo{
+    position: fixed;
+    width: 100%;
+    z-index: 999999;
+    background-color: #fff;
+  }
+   
+  #cabecalho {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-#menu ul{
+    height: 70px;
+  }
+   
+  #menu ul {
     display: flex;
     list-style: none;
-}
-
-#menu ul li{
+  }
+   
+  #menu ul li {
     margin-left: 20px;
     margin-right: 20px;
-}
-
-#menu ul a{
+  }
+   
+  #menu a {
     color: var(--texto);
     font-weight: 500;
     text-decoration: none;
-}
-
-.btn-secundario{
+  }
+   
+  .btn-secudario {
     background-color: var(--secundaria);
-    color: #ffffff; 
+    color: #ffffff;
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 5px;
     text-transform: uppercase;
-    font-size: .8rem;
-}
-
-#banner{
-    background-image: url(/assets/img/banner.jpg);
+    font-size: 0.8rem;
+  }
+   
+  #banner {
+    background-image: url("/assets/img/banner.jpg");
     height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: #ffffff;
-}
-
-#banner p{
+    padding-top: 70px;
+  }
+   
+  #banner p {
     margin: 20px;
-}
-
-#formProcurar{
+  }
+   
+  #formProcurar {
     background-color: #ffffff;
     color: #4d4d4d;
     border-radius: 20px;
-}
-
-#formProcurar form{
+  }
+   
+  #formProcurar form {
     display: flex;
-}
-
-#formProcurar form input{
+  }
+   
+  #formProcurar form input {
     width: 100%;
-    margin: 5px; 
-    padding: 5px; 
+    margin: 5px;
+    padding: 5px;
     font-size: 18px;
     border: none;
-}
-
-#formProcurar form button{
+  }
+   
+  #formProcurar form button {
     background-color: var(--primaria);
     color: #ffffff;
     font-weight: bold;
@@ -96,51 +105,49 @@ body{
     padding-right: 30px;
     margin: 5px;
     border-radius: 20px;
-}
-
-#formProcurar form i{
-    font-size: 18px;
-    margin: 10px 
-}
-
-.bloco-titulo{
-    border-left: 4px solid var(--primaria);
-    padding-left: 10px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-.bloco-titulo  .titulo{
-    display: flex;
-    justify-content: space-between;
-}
-
-.bloco-titulo .titulo a{
-    color: var(--texto);
-    font-size: .8rem; 
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.lista-livros{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-
-.lista-livros img{
-    width: 100%;
-    height: auto ;
-    border: 5px;
-}
-
-.card-livro{
-    flex-grow: 1; 
-    width: calc(25% - 30px);
-    position: relative;
-}
-
-.card-livro span{
+  }
+   
+  #formProcurar form i{
+      font-size: 18px;
+      margin: 10px;
+  }
+   
+  .bloco-titulo{
+      border-left: 4px solid var(--primaria);
+      padding-left: 10px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+  }
+   
+  .bloco-titulo .titulo{
+      display: flex;
+      justify-content: space-between;
+  }
+   
+  .bloco-titulo .titulo a{
+      color: #4d4d4d;
+      font-weight: bold;
+      font-size: .8rem;
+      text-decoration: none;
+  }
+   
+  .lista-livros{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px ;
+  }
+   
+  .lista-livros img{
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+  }
+  .card-livro{
+    flex-grow: 1;
+    width: calc((100% / 4) - 30px);
+    position:relative;  
+  }
+  .capa span{
     position: absolute;
     top: 15px;
     left: 15px;
@@ -148,44 +155,109 @@ body{
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 15px;
-    font-weight: bold;    
-}
-
-.legenda{
+    font-weight: bold;
+   
+  }
+   
+  .legenda{
+   
     background-color: #d9c505;
-}
-
-.black-friday{
-    color:#ffffff;
-    background-color: black;
-}
-
-#rodape{
-    border: 2px solid #ccc; 
+   
+  }
+   
+  .black-friday{
+   
+    background-color: #000000;
+   
+    color: #ffffff;
+  }
+   
+  #rodapé{
+    border: 2px solid #ccc;
     margin-top: 50px;
     padding-top: 30px;
-}
-
-#rodape .container{
+  }
+   
+  #rodapé .container{
     display: flex;
-}
-
-.bloco-rodape{
+    flex-wrap: wrap;
+  }
+  .bloco-rodape{
     flex-grow: 1;
-}
-
-.bloco-rodape ul{
+    width: calc(100% /2);
+  }
+   
+  .bloco-rodape ul{
     list-style: none;
-}
-
-.bloco-rodape ul li{
+  }
+   
+  .bloco-rodape ul li{
     margin: 5px;
+  }
+  .bloco-rodape a{
+    text-decoration: none;
     color: var(--texto);
     font-weight: 500;
-}
-
-#copyright{
+  }
+  .copyright{
     background-color: #ccc;
     text-align: center;
     padding: 20px;
-}
+   
+  }
+   
+  .card-livro h3{
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: center;
+  }
+   
+  #botao-mobile{
+    display: none;
+  }
+   
+  /*  Estilo para mobile */
+   
+  @media (max-width: 767px){
+   
+    #botao-mobile{
+      display: block;
+      margin: 20px;
+      cursor: pointer;
+    }
+   
+    #menu {
+      position: fixed;
+      background-color: #ffffff;
+      top: 70px;
+      left: -255px;
+      width: 250px;
+      height: 100vh;
+      z-index: 999999;
+      box-shadow:2px 5px 5px rgba(0,0,0,0.5);
+      transition: left 0.5s;
+    }
+   
+    #menu.menu-ativo{
+      left: 0;
+    }
+   
+    #menu ul{
+      display: block;
+      margin-top: 30px;
+    }
+   
+    #menu ul li{
+      padding: 10px;
+    }
+   
+    .card-livro{
+      width: calc((100% / 2) - 30px);
+    }
+   
+    .bloco-rodape {
+        flex-grow: 1;
+        width: calc(100% / 2);
+        flex-wrap: wrap;
+    }
+  }

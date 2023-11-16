@@ -19,14 +19,19 @@
 
 <body>
 
-    <header id="cabecalho" class="container">
+<div class="barra-topo">
+    <header  id="cabecalho" class="container">
+
+        <div id="botao-mobile">
+            <i class="fa-solid fa-bars"></i>
+        </div>
         <div id="logotipo">
             <h1><img src="assets/img/logotipo.png" alt="BookMeNow" height="30"></h1>
         </div>
 
         <nav id="menu">
             <ul>
-                <li><a href="#">Categorias</a></li>
+                <li><a href="/admin/index.php">Categorias</a></li>
                 <li><a href="#">Sobre Nós</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
@@ -37,6 +42,7 @@
             <a href="#" class="btn-secundario">Registrar</a>
         </div>
     </header>
+</div>
 
     <div id="banner">
         <div class="container">
@@ -68,24 +74,24 @@
 
             <div class="lista-livros">
 
-            <?php for($count = 1; $count <=6; $count++): ?>
-                <div class="card-livro">
-                    <div class="capa">
-                        <img src="/assets/img/livro-css.png" alt="CSS">
-                        <span class="legenda">Lançamento</span>
+                <?php for ($count = 1; $count <= 6; $count++): ?>
+                    <div class="card-livro">
+                        <div class="capa">
+                            <img src="/assets/img/livro-css.png" alt="CSS">
+                            <span class="legenda">Lançamento</span>
+                        </div>
+                        <h3>CSS Grid Layout: Criando Layouts Profissionais</h3>
                     </div>
-                    <h3>CSS Grid Layout: Criando Layouts Profissionais</h3>
-                </div>
 
-                <div class="card-livro">
-                    <div class="capa">
-                        <img src="/assets/img/livro-html.png" alt="CSS">
-                        <span class="black-friday">Black Friday</span>
+                    <div class="card-livro">
+                        <div class="capa">
+                            <img src="/assets/img/livro-html.png" alt="CSS">
+                            <span class="black-friday">Black Friday</span>
+                        </div>
+                        <h3>HTML e CSS: Guia Prático</h3>
                     </div>
-                    <h3>HTML e CSS: Guia Prático</h3>
-                </div>
-    
-            <?php endfor;?>
+
+                <?php endfor; ?>
 
             </div>
         </section>
